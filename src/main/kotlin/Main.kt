@@ -1,16 +1,22 @@
-fun main() {
+package edu.unicatolica.kotlin
+
+import kotlin.math.sqrt
+
+fun primeCheckDemo() {
     val numbers = listOf(1, 2, 4, 7, 13, 9, 23)
 
-    // map applies the isPrime function to each element of the list
-    val result = numbers.map { isPrime(it) }
+    val result = numbers.map { n ->
+        when (n) {
+            1 -> true
+            2 -> false
+            else -> (2..sqrt(n.toDouble()).toInt()).none { n % it == 0 }
+        }
+    }
 
-    println("Numbers: $numbers")
-    println("Are they prime?: $result")
+    println("IN: $numbers")
+    println("OUT: $result")
 }
 
-/*
-TODO: Function that checks if a number is prime
- */
-fun isPrime(n: Int): Boolean {
-    return true;
+fun main() {
+    primeCheckDemo()
 }
